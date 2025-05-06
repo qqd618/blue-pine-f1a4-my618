@@ -1,0 +1,67 @@
+<!-- gallery.html -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>作品展示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+    .gallery-container { max-width: 960px; margin: auto; padding: 20px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 4px;
+      filter: blur(5px);  /* 模糊图 */
+    }
+    .gallery-item h3 { margin: 10px 0 5px; }
+    .gallery-item p { color: #777; margin: 0 0 10px; }
+    .gallery-item button {
+      background-color: #0070f3;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .gallery-item button:hover {
+      background-color: #005dc1;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery-container">
+    <h1>作品展示</h1>
+    <div class="gallery-grid">
+
+      <!-- 示例作品 -->
+      <div class="gallery-item">
+        <img src="/preview/work1_blur.jpg" alt="预览图">
+        <h3>作品名称1</h3>
+        <p>￥18</p>
+        <button onclick="location.href='/pay.html?work=work1'">支付解锁</button>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/preview/work2_blur.jpg" alt="预览图">
+        <h3>作品名称2</h3>
+        <p>￥28</p>
+        <button onclick="location.href='/pay.html?work=work2'">支付解锁</button>
+      </div>
+
+    </div>
+  </div>Commit new file
+</body>
+</html>
