@@ -22,6 +22,18 @@
   <div id="chat-area" style="margin-top: 20px;"></div>
 
   <script>
+    // 检查 URL 中是否带有 ?id=客服编号
+    const params = new URLSearchParams(window.location.search);
+    const agentId = params.get('id');
+
+    if (agentId) {
+      // 如果 URL 中有客服编号，自动显示提示并跳过手动输入
+      document.getElementById('chat-form').style.display = 'none';
+      const area = document.getElementById('chat-area');
+      area.innerHTML = `🔗 已自动连接到客服编号：<strong>${agentId}</strong>`;
+    }
+
+    // 表单提交逻辑（手动输入）
     document.getElementById('chat-form').addEventListener('submit', function (e) {
       e.preventDefault();
       const name = document.getElementById('user-input').value;
