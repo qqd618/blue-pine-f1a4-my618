@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>客服工作台</title>
+</head>
+<body>
+  <h1>客服工作台</h1>
+  <p>欢迎，客服人员！</p>
+  <div id="chat-area"></div>
+  <form id="reply-form">
+    <input type="text" id="reply-input" placeholder="请输入回复..." 
+required />
+    <button type="submit">发送</button>
+  </form>
+  <script>
+    document.getElementById('reply-form').addEventListener('submit', 
+function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('reply-input').value;
+      alert('你回复了：' + msg);
+      document.getElementById('reply-input').value = '';
+    });
+  </script>
+</body>
+</html>
+git commit -m "feat: 添加客服工作台页面"
+git push
+
+
