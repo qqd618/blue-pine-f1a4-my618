@@ -12,15 +12,23 @@
     📩 请输入客服名字开始聊天
   </div>
 
-  <!-- 用户输入客服名字的输入框 -->
+  <!-- 用户输入框 -->
   <form id="chat-form">
     <input type="text" id="user-input" placeholder="请输入客服名字..." required />
     <button type="submit">发送</button>
   </form>
 
-  <!-- Vue 应用挂载点 -->
-  <div id="app"></div>
+  <!-- 聊天展示区域 -->
+  <div id="chat-area" style="margin-top: 20px;"></div>
 
-  <script type="module" src="/src/main.js"></script>
+  <script>
+    document.getElementById('chat-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('user-input').value;
+      const area = document.getElementById('chat-area');
+      area.innerHTML = `你输入了客服名：<strong>${name}</strong>`;
+      document.getElementById('user-input').value = '';
+    });
+  </script>
 </body>
 </html>
