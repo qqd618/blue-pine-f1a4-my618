@@ -1,0 +1,68 @@
+*<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客服工作台</title>
+</head>
+<body>
+  <h2>👩‍💻 客服工作台</h2>
+
+  <!-- 聊天输入框区域 -->
+  <form id="reply-form">
+    <input type="text" id="reply-input" placeholder="请输入回复..." required />
+    <button type="submit">发送</button>
+  </form>
+
+  <hr />
+
+  <!-- 文件上传区域 -->
+  <h3>📎 上传文件</h3>
+  <form id="upload-form">
+    <input type="file" id="file-input" multiple />
+    <button type="submit">上传</button>
+  </form>
+
+  <ul id="file-list"></ul>
+
+  <!-- JavaScript 逻辑 -->
+  <script>
+    // 聊天回复按钮
+    document.getElementById('reply-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('reply-input').value;
+      alert('你回复了：' + msg);
+      document.getElementById('reply-input').value = '';
+    });
+
+    // 上传文件按钮
+    document.getElementById('upload-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const files = document.getElementById('file-input').files;
+      const fileList = document.getElementById('file-list');
+      fileList.innerHTML = '';
+
+      for (const file of files) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch(`https://transfer.sh/${encodeURIComponent(file.name)}`, {
+          method: "POST",
+          body: formData
+        });
+
+        if (response.ok) {
+          const url = await response.text();
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${url}" target="_blank">${file.name}</a>`;
+          fileList.appendChild(li);
+        } else {
+          alert(`❌ 上传失败: ${file.name}`);
+        }
+      }
+
+      document.getElementById('file-input').value = '';
+    });
+  </script>
+</body>
+</html>
