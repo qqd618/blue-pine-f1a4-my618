@@ -13,6 +13,14 @@
     <input type="text" id="reply-input" placeholder="请输入回复..." 
 required />
     <button type="submit">发送</button>
+    <h2>📎 上传文件</h2>
+<form id="upload-form">
+  <input type="file" id="file-input" multiple />
+  <button type="submit">上传</button>
+</form>
+
+<ul id="file-list"></ul>
+
   </form>
   <script>
     document.getElementById('reply-form').addEventListener('submit', 
