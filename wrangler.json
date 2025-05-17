@@ -1,7 +1,7 @@
 {
   "compatibility_date": "2025-04-01",
   "main": "src/server/index.ts",
-  "name": "blue-pine-f1a4-my618",
+  "name": "duxiang02",
   "migrations": [
     {
       "new_sqlite_classes": ["Chat"],
